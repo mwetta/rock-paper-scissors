@@ -4,6 +4,10 @@ const computerPlay = Math.floor(Math.random() * choices.length);
 
 console.log(choices[computerPlay]);
 
+let userPlay = prompt('Rock, Paper, Scissors?', '');
+
+console.log(userPlay)
+
 /*  computerPlay
         randomly select from rock, paper, scissors
         store in computerSelection
