@@ -6,7 +6,20 @@ console.log(choices[computerPlay]);
 
 let userPlay = prompt('Rock, Paper, Scissors?', '');
 
-console.log(userPlay)
+let validOption = (choices.includes(userPlay)) ? true : false; //checks to see whether userPlay contains something from choices Array, returns true or false and stores in validOption
+
+console.log(choices.includes(userPlay));
+console.log(validOption);
+console.log(userPlay);
+
+    /* if userPlay is null, call userPlay
+
+        if validOption = falsse, call userPlay
+
+        else playRound
+    */
+
+
 
 /*  computerPlay
         randomly select from rock, paper, scissors
