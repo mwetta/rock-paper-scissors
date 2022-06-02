@@ -1,3 +1,4 @@
+const choices = ['Rock', 'Paper', 'Scissors'];
 /*  computerPlay
         randomly select from rock, paper, scissors
         store in computerSelection
