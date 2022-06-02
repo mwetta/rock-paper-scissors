@@ -1,4 +1,9 @@
 const choices = ['Rock', 'Paper', 'Scissors'];
+
+const computerPlay = Math.floor(Math.random() * choices.length);
+
+console.log(choices[computerPlay]);
+
 /*  computerPlay
         randomly select from rock, paper, scissors
         store in computerSelection
