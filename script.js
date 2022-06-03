@@ -21,7 +21,7 @@ game();
 
 function game()
 {
-    let playRound = function(playerSelection, computerSelection)
+   function playRound(playerSelection, computerSelection)
     { 
         if ('rock','scissors') {
             return true;
@@ -36,8 +36,10 @@ function game()
 
     if (playRound = 'true') {
         alert(`You win! ${playerSelection} beats ${choices[computerPlay]}!`);
+        console.log(`You win! ${playerSelection} beats ${choices[computerPlay]}!`);
     } else {
         alert(`You lose! ${choices[computerPlay]} beats ${playerSelection}!`);
+        console.log(`You lose! ${choices[computerPlay]} beats ${playerSelection}!`);
     }
 }
 
