@@ -17,8 +17,10 @@ console.log(userPlay);
     need to add messages
 */
 
-function game(){
-    function playRound(playerSelection, computerSelection){ 
+function game()
+{
+    function playRound(playerSelection, computerSelection)
+    { 
         if ('rock','scissors') {
             return true;
         } else if ('scissors', 'paper') {
@@ -29,6 +31,7 @@ function game(){
             return false;
         };
     }
+    playRound(playerSelection, computerSelection);
 }
 console.log(playRound(playerSelection, computerSelection))
 
