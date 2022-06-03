@@ -31,7 +31,11 @@ function game()
             return false;
         };
     }
-    playRound(playerSelection, computerSelection);
+    if (playRound = 'true') {
+        print `You win! ${playerSelection} beats ${computerSelection}!`
+    } else {
+        print `You lose! ${computerSelection} beats ${playerSelection}!`
+    }
 }
 console.log(playRound(playerSelection, computerSelection))
 
