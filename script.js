@@ -4,7 +4,7 @@ const computerPlay = Math.floor(Math.random() * choices.length);
 let computerSelection = computerPlay;
 console.log(choices[computerPlay]); 
 
-let userPlay = prompt('Rock, Paper, Scissors?', ''); // need to add capitalization to standardize input or make playRound case insensitive
+let userPlay = prompt('Rock, Paper, Scissors?', ''); 
 let playerSelection = userPlay.toLowerCase();
 let validOption = (choices.includes(userPlay)) ? true : false; //checks to see whether userPlay contains something from choices Array, returns true or false and stores in validOption
 
@@ -19,7 +19,7 @@ console.log(userPlay);
 
 function game()
 {
-    function playRound(playerSelection, computerSelection)
+    let playRound = function(playerSelection, computerSelection)
     { 
         if ('rock','scissors') {
             return true;
@@ -31,13 +31,13 @@ function game()
             return false;
         };
     }
+
     if (playRound = 'true') {
         print `You win! ${playerSelection} beats ${computerSelection}!`
     } else {
         print `You lose! ${computerSelection} beats ${playerSelection}!`
     }
 }
-console.log(playRound(playerSelection, computerSelection))
 
     /* if userPlay is null, call userPlay
 
