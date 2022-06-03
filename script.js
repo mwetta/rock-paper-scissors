@@ -1,16 +1,33 @@
 const choices = ['Rock', 'Paper', 'Scissors'];
 
 const computerPlay = Math.floor(Math.random() * choices.length);
+let computerSelection = computerPlay;
+console.log(choices[computerPlay]); 
 
-console.log(choices[computerPlay]);
-
-let userPlay = prompt('Rock, Paper, Scissors?', '');
-
+let userPlay = prompt('Rock, Paper, Scissors?', ''); // need to add capitalization to standardize input or make playRound case insensitive
+let playerSelection = userPlay;
 let validOption = (choices.includes(userPlay)) ? true : false; //checks to see whether userPlay contains something from choices Array, returns true or false and stores in validOption
 
 console.log(choices.includes(userPlay));
 console.log(validOption);
 console.log(userPlay);
+
+/* playRound returns true if the player wins; else it returns false
+    does not deal with "draws" - if both are the same
+    need to add messages
+*/
+    function playRound(playerSelection, computerSelection){ 
+        if ('Rock','Scissors') {
+            return true;
+        } else if ('Scissors', 'Paper') {
+            return true;
+        } else if ('Paper', 'Rock'){
+            return true;
+        }   else {
+            return false;
+        }
+    }
+console.log(playRound(playerSelection, computerSelection))
 
     /* if userPlay is null, call userPlay
 
