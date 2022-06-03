@@ -17,6 +17,8 @@ console.log(userPlay);
     need to add messages
 */
 
+game();
+
 function game()
 {
     let playRound = function(playerSelection, computerSelection)
@@ -33,9 +35,9 @@ function game()
     }
 
     if (playRound = 'true') {
-        print `You win! ${playerSelection} beats ${computerSelection}!`
+        alert(`You win! ${playerSelection} beats ${choices[computerPlay]}!`);
     } else {
-        print `You lose! ${computerSelection} beats ${playerSelection}!`
+        alert(`You lose! ${choices[computerPlay]} beats ${playerSelection}!`);
     }
 }
 
