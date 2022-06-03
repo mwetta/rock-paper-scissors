@@ -16,6 +16,8 @@ console.log(userPlay);
     does not deal with "draws" - if both are the same
     need to add messages
 */
+
+function game(){
     function playRound(playerSelection, computerSelection){ 
         if ('Rock','Scissors') {
             return true;
@@ -27,6 +29,7 @@ console.log(userPlay);
             return false;
         }
     }
+}
 console.log(playRound(playerSelection, computerSelection))
 
     /* if userPlay is null, call userPlay
