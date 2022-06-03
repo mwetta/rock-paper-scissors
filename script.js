@@ -1,11 +1,11 @@
-const choices = ['Rock', 'Paper', 'Scissors'];
+const choices = ['rock', 'paper', 'scissors'];
 
 const computerPlay = Math.floor(Math.random() * choices.length);
 let computerSelection = computerPlay;
 console.log(choices[computerPlay]); 
 
 let userPlay = prompt('Rock, Paper, Scissors?', ''); // need to add capitalization to standardize input or make playRound case insensitive
-let playerSelection = userPlay;
+let playerSelection = userPlay.toLowerCase();
 let validOption = (choices.includes(userPlay)) ? true : false; //checks to see whether userPlay contains something from choices Array, returns true or false and stores in validOption
 
 console.log(choices.includes(userPlay));
@@ -19,15 +19,15 @@ console.log(userPlay);
 
 function game(){
     function playRound(playerSelection, computerSelection){ 
-        if ('Rock','Scissors') {
+        if ('rock','scissors') {
             return true;
-        } else if ('Scissors', 'Paper') {
+        } else if ('scissors', 'paper') {
             return true;
-        } else if ('Paper', 'Rock'){
+        } else if ('paper', 'rock'){
             return true;
         }   else {
             return false;
-        }
+        };
     }
 }
 console.log(playRound(playerSelection, computerSelection))
