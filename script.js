@@ -1,89 +1,60 @@
-const choices = ['rock', 'paper', 'scissors'];
-
-let win = 'false';
-let draw = 'false';
-
 game();
 
+function throwHand(choices) {
+    let userPlay = prompt('Rock, Paper, Scissors?', '');
+        if (userPlay === null) {
+            return throwHand(choices);
+        }
+    let playerSelection = userPlay.toLowerCase(); 
+    //checks to see whether playerSelection contains something from choices Array, returns true or false and stores in validOption
+    let validOption = (choices.includes(playerSelection)) ? true : false;
+        //if not validOption, throwHand again
+        if (validOption === false) {
+            return throwHand(choices);
+        } else {
+            return playerSelection;
+        }
+}
+
+function playRound(playerSelection,computerSelection)
+{ 
+    
+    if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        return 1;
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        return 1;
+    } else if (playerSelection === 'paper' && computerSelection === 'rock'){
+        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
+        return 1;
+    }   else if (playerSelection === computerSelection){
+        console.log(`No one wins! You played ${playerSelection} and the computer played ${computerSelection}! It is a draw!`);
+        return 0;
+    } else {
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
+        return -1;
+    };
+}
+
 function game()
-{
+{   
+    const choices = ['rock', 'paper', 'scissors'];
+    let playerWin = 0;
+    let computerWin = 0;
+    for (let i = 0; i < 5; i++){
 
     let computerPlay = Math.floor(Math.random() * choices.length);
     let computerSelection = (choices[computerPlay]);
 
-    let userPlay = prompt('Rock, Paper, Scissors?', ''); 
-    let playerSelection = userPlay.toLowerCase();
-    let validOption = (choices.includes(playerSelection)) ? true : false; //checks to see whether playerSelection contains something from choices Array, returns true or false and stores in validOption
+    let playerSelection = throwHand(choices);
 
-    // playRound returns win = true if the player wins; draw = true if it's a draw; else it returns false
-   function playRound()
-    { 
-        
-        if (playerSelection === 'rock' && computerSelection === 'scissors') {
-            win = 'true';
-        } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-            win = 'true';
-        } else if (playerSelection === 'paper' && computerSelection === 'rock'){
-            win = 'true';
-        }   else if (playerSelection === computerSelection){
-            draw = 'true';
-        } else {
-            win = 'false';
-        };
+    let result = playRound(playerSelection,computerSelection);
+        if (result > 0) {
+            playerWin++;
+        } else if (result <0) {
+            computerWin++;
+        }
     }
-    playRound();
-
-    if (win === 'true') {
-        console.log(`You win! ${playerSelection} beats ${choices[computerPlay]}!`)
-    } else if (draw === 'true') {
-        console.log(`No one wins! You played ${playerSelection} and the computer played ${choices[computerPlay]}! It is a draw!`)
-    } else if (win === 'false') {
-        console.log(`You lose! ${choices[computerPlay]} beats ${playerSelection}!`)
-    }
-    console.log(computerSelection); 
-    console.log(choices.includes(userPlay));
-    console.log(validOption);
-    console.log(playerSelection);
-    console.log('player win =' + win);
+    console.log(`Score: Player ${playerWin} Computer ${computerWin}`);
 }
-
-
-
-    /* if userPlay is null, call userPlay
-
-        if validOption = false, call userPlay
-
-        else playRound
-    */
-
-
-
-/*  computerPlay
-        randomly select from rock, paper, scissors
-        store in computerSelection
-
-    console.log(computerSelection)
-
-    userPlay prompts for input either rock, paper, scissors // should be case insensitive
-        store in playerSelection 
-
-    if playerSelection != rock, paper, scissors
-        return error 
-
-    else
-
-    playRound
-        flag player win if
-            playerSelection = rock && computerSelection = scissors 
-            OR
-            playerSelection = paper && computerSelection = rock
-            OR 
-            playerSelection = scissors && computerSelection = paper
-        
-        if win 
-            return "You win! " + playerSelection + " beats " + computerSelection + "!"
-            
-        else
-            return "You lose! " + computerSelection + " beats " + playerSelection + "!"
-
-*/
