@@ -1,23 +1,21 @@
 const choices = ['rock', 'paper', 'scissors'];
 
-let computerPlay = Math.floor(Math.random() * choices.length);
-let computerSelection = (choices[computerPlay]);
-
-
-let userPlay = prompt('Rock, Paper, Scissors?', ''); 
-let playerSelection = userPlay.toLowerCase();
-let validOption = (choices.includes(playerSelection)) ? true : false; //checks to see whether userPlay contains something from choices Array, returns true or false and stores in validOption
-
-/* playRound returns true if the player wins; else it returns false
-    does not deal with "draws" - if both are the same
-    need to add messages
-*/
 let win = 'false';
 let draw = 'false';
+
 game();
 
 function game()
 {
+
+    let computerPlay = Math.floor(Math.random() * choices.length);
+    let computerSelection = (choices[computerPlay]);
+
+    let userPlay = prompt('Rock, Paper, Scissors?', ''); 
+    let playerSelection = userPlay.toLowerCase();
+    let validOption = (choices.includes(playerSelection)) ? true : false; //checks to see whether playerSelection contains something from choices Array, returns true or false and stores in validOption
+
+    // playRound returns win = true if the player wins; draw = true if it's a draw; else it returns false
    function playRound()
     { 
         
@@ -42,13 +40,15 @@ function game()
     } else if (win === 'false') {
         console.log(`You lose! ${choices[computerPlay]} beats ${playerSelection}!`)
     }
+    console.log(computerSelection); 
+    console.log(choices.includes(userPlay));
+    console.log(validOption);
+    console.log(playerSelection);
+    console.log('player win =' + win);
 }
 
-console.log(computerSelection); 
-console.log(choices.includes(userPlay));
-console.log(validOption);
-console.log(playerSelection);
-console.log('player win =' + win);
+
+
     /* if userPlay is null, call userPlay
 
         if validOption = false, call userPlay
