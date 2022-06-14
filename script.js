@@ -1,60 +1,48 @@
-game();
+let playerWin = 0;
+let computerWin = 0;
 
-function throwHand(choices) {
-    let userPlay = prompt('Rock, Paper, Scissors?', '');
-        if (userPlay === null) {
-            return throwHand(choices);
-        }
-    let playerSelection = userPlay.toLowerCase(); 
-    //checks to see whether playerSelection contains something from choices Array, returns true or false and stores in validOption
-    let validOption = (choices.includes(playerSelection)) ? true : false;
-        //if not validOption, throwHand again
-        if (validOption === false) {
-            return throwHand(choices);
-        } else {
-            return playerSelection;
-        }
+const results = document.querySelector('#results');
+function computerPlay() {
+    const choices = ['Rock', 'Paper', 'Scissors'];
+    let computerPlay = Math.floor(Math.random() * choices.length);
+    return (choices[computerPlay]);
 }
 
-function playRound(playerSelection,computerSelection)
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    playRound(button.id);
+  });
+});
+
+function playRound(playerSelection)
 { 
-    
-    if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
-        return 1;
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
-        return 1;
-    } else if (playerSelection === 'paper' && computerSelection === 'rock'){
-        console.log(`You win! ${playerSelection} beats ${computerSelection}!`);
-        return 1;
-    }   else if (playerSelection === computerSelection){
-        console.log(`No one wins! You played ${playerSelection} and the computer played ${computerSelection}! It is a draw!`);
-        return 0;
+    const computerSelection = computerPlay();
+
+    if ((playerSelection === 'Rock' && computerSelection === 'Scissors') ||
+            (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
+            (playerSelection === 'Paper' && computerSelection === 'Rock')
+        )   { results.textContent = `You win! ${playerSelection} beats ${computerSelection}!`;
+                playerWin++;
+    } else if (playerSelection === computerSelection){
+        results.textContent = `No one wins! ${playerSelection} against ${computerSelection} is a draw! Play again.`;
     } else {
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}!`);
-        return -1;
+        results.textContent = `You lose! ${computerSelection} beats ${playerSelection}!`;
+        computerWin++;
     };
+
+    game();
 }
 
 function game()
 {   
-    const choices = ['rock', 'paper', 'scissors'];
-    let playerWin = 0;
-    let computerWin = 0;
-    for (let i = 0; i < 5; i++){
+    const scoreBoard = document.querySelector('#score');
+    scoreBoard.textContent = `Score: Player ${playerWin} Computer ${computerWin}`;
+    const gameOver = document.querySelector('#gameOver');
 
-    let computerPlay = Math.floor(Math.random() * choices.length);
-    let computerSelection = (choices[computerPlay]);
-
-    let playerSelection = throwHand(choices);
-
-    let result = playRound(playerSelection,computerSelection);
-        if (result > 0) {
-            playerWin++;
-        } else if (result <0) {
-            computerWin++;
-        }
+    if (computerWin >= 5 || playerWin >= 5){
+        gameOver.textContent = "Game Over!"
+        scoreBoard.textContent = `Final Score: Player ${playerWin} Computer ${computerWin}`;
     }
-    console.log(`Score: Player ${playerWin} Computer ${computerWin}`);
 }
+
